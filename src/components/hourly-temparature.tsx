@@ -32,7 +32,7 @@ export function HourlyTemperature({ data }: HourlyTemperatureProps) {
         <CardTitle>Today's Temperature</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="h-[200px] w-full">
+        <div className="h-50 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>
               <XAxis
