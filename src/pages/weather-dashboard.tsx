@@ -8,6 +8,10 @@ import {
   useReverseGeocodeQuery,
   useWeatherQuery,
 } from "@/hooks/use-weather";
+import CurrentWeather from "@/components/current-weather";
+import { HourlyTemperature } from "@/components/hourly-temparature";
+import WeatherDetails from "@/components/weather-details";
+import WeatherForecast from "@/components/weather-forecast";
 function WeatherDashboard() {
   const {
     coordinates,
@@ -98,6 +102,20 @@ function WeatherDashboard() {
             }`}
           />
         </Button>
+      </div>
+
+      <div className="grid gap-6">
+        <div className="flex flex-col lg:flex-row gap-5">
+          <CurrentWeather
+            data={weatherQuery.data}
+            locationName={locationName}
+          />
+          <HourlyTemperature data={forecastQuery.data} />
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 items-start">
+          <WeatherDetails data={weatherQuery.data} />
+          <WeatherForecast data={forecastQuery.data} />
+        </div>
       </div>
     </div>
   );
