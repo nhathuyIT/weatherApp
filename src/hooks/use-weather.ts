@@ -37,7 +37,7 @@ export function useReverseGeocodeQuery(coordinates: Coordinates | null) {
 export function useLocationSearchQuery(query: string) {
   return useQuery({
     queryKey: WEATHER_KEYS.search(query),
-    queryFn: () => weatherAPI.searchLocation(query),
+    queryFn: () => weatherAPI.searchLocations(query),
     enabled: query.length >= 3,
   });
 }
