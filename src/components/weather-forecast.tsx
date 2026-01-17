@@ -20,6 +20,8 @@ interface DailyForecast {
   date: number;
 }
 const WeatherForecast = ({ data }: WeatherForecastProps) => {
+  if (!data?.list) return null;
+
   const dailyForecast = data.list.reduce(
     (acc, forecast) => {
       const date = format(new Date(forecast.dt * 1000), "yyyy-MM-dd");

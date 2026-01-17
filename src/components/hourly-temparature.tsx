@@ -20,6 +20,8 @@ interface ChartData {
 }
 
 export function HourlyTemperature({ data }: HourlyTemperatureProps) {
+  if (!data?.list) return null;
+
   const chartData: ChartData[] = data.list.slice(0, 8).map((item) => ({
     time: format(new Date(item.dt * 1000), "ha"),
     temp: Math.round(item.main.temp),

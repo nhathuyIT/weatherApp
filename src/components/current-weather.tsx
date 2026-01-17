@@ -7,13 +7,15 @@ interface CurrentWeatherProps {
   locationName?: GeocodingResponse;
 }
 const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
+  if (!data) return null;
+
   const {
     weather: [currentWeather],
     main: { temp, feels_like, humidity, temp_min, temp_max },
     wind: { speed },
   } = data;
+
   const formatTemp = (temp: number) => `${Math.round(temp)}°`;
-  if (!data) return null;
   return (
     <Card className="overflow-hidden">
       <CardContent className="p-6">
