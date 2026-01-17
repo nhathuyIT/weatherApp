@@ -20,23 +20,32 @@ interface DailyForecast {
   date: number;
 }
 const WeatherForecast = ({ data }: WeatherForecastProps) => {
-  const dailyForecast = data.list.reduce((acc, forecast) => {
-    const date = format(new Date(forecast.dt * 1000), "yyyy-MM-dd");
-    if (!acc[date]) {
-      acc[date] = {
-        temp_min: forecast.main.temp_min,
-        temp_max: forecast.main.temp_max,
-        humidity: forecast.main.humidity,
-        wind: forecast.wind.speed,
-        weather: forecast.weather[0],
-        date: forecast.dt,
-      };
-    } else {
-      acc[date].temp_min = Math.min(acc[date].temp_min, forecast.main.temp_min);
-      acc[date].temp_max = Math.max(acc[date].temp_max, forecast.main.temp_max);
-    }
-    return acc;
-  }, {} as Record<string, DailyForecast>);
+  const dailyForecast = data.list.reduce(
+    (acc, forecast) => {
+      const date = format(new Date(forecast.dt * 1000), "yyyy-MM-dd");
+      if (!acc[date]) {
+        acc[date] = {
+          temp_min: forecast.main.temp_min,
+          temp_max: forecast.main.temp_max,
+          humidity: forecast.main.humidity,
+          wind: forecast.wind.speed,
+          weather: forecast.weather[0],
+          date: forecast.dt,
+        };
+      } else {
+        acc[date].temp_min = Math.min(
+          acc[date].temp_min,
+          forecast.main.temp_min,
+        );
+        acc[date].temp_max = Math.max(
+          acc[date].temp_max,
+          forecast.main.temp_max,
+        );
+      }
+      return acc;
+    },
+    {} as Record<string, DailyForecast>,
+  );
 
   const nextDays = Object.values(dailyForecast).slice(1, 6); // Next 5 days
 
@@ -45,7 +54,7 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
     <div>
       <Card>
         <CardHeader>
-          <CardTitle>Weather Forecast</CardTitle>
+          <CardTitle>5-Day Forecast</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">

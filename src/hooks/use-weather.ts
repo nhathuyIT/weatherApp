@@ -34,3 +34,10 @@ export function useReverseGeocodeQuery(coordinates: Coordinates | null) {
     enabled: !!coordinates,
   });
 }
+export function useLocationSearchQuery(query: string) {
+  return useQuery({
+    queryKey: WEATHER_KEYS.search(query),
+    queryFn: () => weatherAPI.searchLocation(query),
+    enabled: query.length >= 3,
+  });
+}

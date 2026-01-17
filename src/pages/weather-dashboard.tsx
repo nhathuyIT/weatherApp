@@ -1,6 +1,5 @@
 import WeatherSkeleton from "@/components/loading-skeleton";
 import { Button } from "@/components/ui/button";
-import useGeolocation from "@/hooks/use-geolocation";
 import { AlertTriangle, MapPin, RefreshCw } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -12,6 +11,8 @@ import CurrentWeather from "@/components/current-weather";
 import { HourlyTemperature } from "@/components/hourly-temparature";
 import WeatherDetails from "@/components/weather-details";
 import WeatherForecast from "@/components/weather-forecast";
+import useGeolocation from "@/hooks/use-geolocation";
+import { FavoriteCities } from "@/components/favorite-cities";
 function WeatherDashboard() {
   const {
     coordinates,
@@ -86,6 +87,7 @@ function WeatherDashboard() {
   }
   return (
     <div className="space-y-4">
+      <FavoriteCities />
       <div className="flex items-center justify-between ">
         <h1 className="text-xl font-bold tracking-tight">My Location</h1>
         <Button
