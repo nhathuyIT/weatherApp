@@ -86,18 +86,21 @@ function WeatherDashboard() {
     return <WeatherSkeleton />;
   }
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 sm:space-y-6">
       <FavoriteCities />
-      <div className="flex items-center justify-between ">
-        <h1 className="text-xl font-bold tracking-tight">My Location</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
+          My Location
+        </h1>
         <Button
           variant={"outline"}
           size={"icon"}
           onClick={handleRefresh}
           disabled={weatherQuery.isFetching || forecastQuery.isFetching}
+          className="h-8 w-8 sm:h-10 sm:w-10"
         >
           <RefreshCw
-            className={`h-4 w-4 ${
+            className={`h-3 w-3 sm:h-4 sm:w-4 ${
               weatherQuery.isFetching || forecastQuery.isFetching
                 ? "animate-spin"
                 : ""
@@ -106,15 +109,15 @@ function WeatherDashboard() {
         </Button>
       </div>
 
-      <div className="grid gap-6">
-        <div className="flex flex-col lg:flex-row gap-5">
+      <div className="grid gap-4 sm:gap-6">
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-5">
           <CurrentWeather
             data={weatherQuery.data}
             locationName={locationName}
           />
           <HourlyTemperature data={forecastQuery.data} />
         </div>
-        <div className="grid gap-6 md:grid-cols-2 items-start">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 items-start">
           <WeatherDetails data={weatherQuery.data} />
           <WeatherForecast data={forecastQuery.data} />
         </div>

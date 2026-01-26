@@ -120,4 +120,17 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Ensure smooth scrolling and prevent horizontal overflow */
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  
+  /* Optimize for touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
 }

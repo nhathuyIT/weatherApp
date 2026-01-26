@@ -31,7 +31,7 @@ function FavoriteCityTablet({
   return (
     <div
       onClick={handleClick}
-      className="relative flex min-w-[250px] cursor-pointer items-center gap-3 rounded-lg border bg-card p-4 pr-8 shadow-sm transition-all hover:shadow-md"
+      className="relative flex min-w-50 sm:min-w-62.5 cursor-pointer items-center gap-2 sm:gap-3 rounded-lg border bg-card p-3 sm:p-4 pr-8 shadow-sm transition-all hover:shadow-md"
       role="button"
       tabIndex={0}
     >
@@ -54,21 +54,21 @@ function FavoriteCityTablet({
         </div>
       ) : weather ? (
         <>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <img
               src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
               alt={weather.weather[0].description}
-              className="h-8 w-8"
+              className="h-7 w-7 sm:h-8 sm:w-8"
             />
             <div>
-              <p className="font-medium">{name}</p>
+              <p className="text-sm sm:text-base font-medium">{name}</p>
               <p className="text-xs text-muted-foreground">
                 {weather.sys.country}
               </p>
             </div>
           </div>
           <div className="ml-auto text-right">
-            <p className="text-xl font-bold">
+            <p className="text-lg sm:text-xl font-bold">
               {Math.round(weather.main.temp)}°
             </p>
             <p className="text-xs capitalize text-muted-foreground">
@@ -90,7 +90,9 @@ export function FavoriteCities() {
 
   return (
     <>
-      <h1 className="text-xl font-bold tracking-tight">Favorites</h1>
+      <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
+        Favorites
+      </h1>
       <ScrollArea className="w-full pb-4">
         <div className="flex gap-4">
           {favorites.map((city) => (

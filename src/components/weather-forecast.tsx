@@ -56,43 +56,56 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
     <div>
       <Card>
         <CardHeader>
-          <CardTitle>5-Day Forecast</CardTitle>
+          <CardTitle className="text-base sm:text-lg">5-Day Forecast</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4">
+          <div className="grid gap-3 sm:gap-4">
             {nextDays.map((day) => (
               <div
                 key={day.date}
-                className="grid grid-cols-3 items-center gap-4 rounded-lg border p-4"
+                className="flex flex-col sm:grid sm:grid-cols-3 items-start sm:items-center gap-2 sm:gap-4 rounded-lg border p-3 sm:p-4"
               >
-                <div>
-                  <p className="font-medium">
+                <div className="w-full sm:w-auto">
+                  <p className="text-xs sm:text-sm md:text-base font-medium">
                     {format(new Date(day.date * 1000), "EEE, MMM d")}
                   </p>
-                  <p className="text-sm text-muted-foreground capitalize">
+                  <p className="text-xs sm:text-sm text-muted-foreground capitalize">
                     {day.weather.description}
                   </p>
                 </div>
 
-                <div className="flex justify-center gap-4">
-                  <span className="flex items-center text-blue-500">
-                    <ArrowDown className="mr-1 h-4 w-4" />
-                    {formatTemp(day.temp_min)}
-                  </span>
-                  <span className="flex items-center text-red-500">
-                    <ArrowUp className="mr-1 h-4 w-4" />
-                    {formatTemp(day.temp_max)}
-                  </span>
+                <div className="flex items-center justify-between sm:justify-center w-full sm:w-auto gap-4">
+                  <div className="flex gap-2 sm:gap-4">
+                    <span className="flex items-center text-xs sm:text-sm text-blue-500">
+                      <ArrowDown className="mr-0.5 sm:mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+                      {formatTemp(day.temp_min)}
+                    </span>
+                    <span className="flex items-center text-xs sm:text-sm text-red-500">
+                      <ArrowUp className="mr-0.5 sm:mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+                      {formatTemp(day.temp_max)}
+                    </span>
+                  </div>
+
+                  <div className="flex sm:hidden gap-3">
+                    <span className="flex items-center gap-1">
+                      <Droplets className="h-3 w-3 text-blue-500" />
+                      <span className="text-xs">{day.humidity}%</span>
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Wind className="h-3 w-3 text-blue-500" />
+                      <span className="text-xs">{day.wind}m/s</span>
+                    </span>
+                  </div>
                 </div>
 
-                <div className="flex justify-end gap-4">
+                <div className="hidden sm:flex justify-end gap-2 sm:gap-4">
                   <span className="flex items-center gap-1">
-                    <Droplets className="h-4 w-4 text-blue-500" />
-                    <span className="text-sm">{day.humidity}%</span>
+                    <Droplets className="h-3 w-3 sm:h-4 sm:w-4 text-blue-500" />
+                    <span className="text-xs sm:text-sm">{day.humidity}%</span>
                   </span>
                   <span className="flex items-center gap-1">
-                    <Wind className="h-4 w-4 text-blue-500" />
-                    <span className="text-sm">{day.wind}m/s</span>
+                    <Wind className="h-3 w-3 sm:h-4 sm:w-4 text-blue-500" />
+                    <span className="text-xs sm:text-sm">{day.wind}m/s</span>
                   </span>
                 </div>
               </div>

@@ -31,10 +31,12 @@ export function HourlyTemperature({ data }: HourlyTemperatureProps) {
   return (
     <Card className="flex-1">
       <CardHeader>
-        <CardTitle>Today's Temperature</CardTitle>
+        <CardTitle className="text-base sm:text-lg">
+          Today's Temperature
+        </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="h-50 w-full">
+        <div className="h-[200px] sm:h-[250px] md:h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>
               <XAxis

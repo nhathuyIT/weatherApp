@@ -46,11 +46,12 @@ export function CitySearch() {
     <>
       <Button
         variant="outline"
-        className="relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
+        className="relative w-full sm:w-auto justify-start text-xs sm:text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
         onClick={() => setOpen(true)}
       >
-        <Search className="mr-2 h-4 w-4" />
-        Search cities...
+        <Search className="mr-1 sm:mr-2 h-4 w-4" />
+        <span className="hidden sm:inline">Search cities...</span>
+        <span className="sm:hidden">Search</span>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>

@@ -32,10 +32,10 @@ export function FavoriteButton({ data }: FavoriteButtonProps) {
       variant={isCurrentlyFavorite ? "default" : "outline"}
       size="icon"
       onClick={handleToggleFavorite}
-      className={isCurrentlyFavorite ? "bg-yellow-500 hover:bg-yellow-600" : ""}
+      className={`h-8 w-8 sm:h-10 sm:w-10 ${isCurrentlyFavorite ? "bg-yellow-500 hover:bg-yellow-600" : ""}`}
     >
       <Star
-        className={`h-4 w-4 ${isCurrentlyFavorite ? "fill-current" : ""}`}
+        className={`h-3 w-3 sm:h-4 sm:w-4 ${isCurrentlyFavorite ? "fill-current" : ""}`}
       />
     </Button>
   );

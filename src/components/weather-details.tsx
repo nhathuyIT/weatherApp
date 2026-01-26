@@ -50,21 +50,25 @@ const WeatherDetails = ({ data }: WeatherDetailsProps) => {
       <>
         <Card>
           <CardHeader>
-            <CardTitle>Weather Details</CardTitle>
+            <CardTitle className="text-base sm:text-lg">
+              Weather Details
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-3 sm:gap-6 grid-cols-1 sm:grid-cols-2">
               {details.map((detail) => (
                 <div
                   key={detail.title}
-                  className="flex items-center gap-3 rounded-lg border p-4"
+                  className="flex items-center gap-2 sm:gap-3 rounded-lg border p-3 sm:p-4"
                 >
-                  <detail.icons className={`h-5 w-5 ${detail.color}`} />
+                  <detail.icons
+                    className={`h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 ${detail.color}`}
+                  />
                   <div>
-                    <p className="text-sm font-medium leading-none">
+                    <p className="text-xs sm:text-sm font-medium leading-none">
                       {detail.title}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xs sm:text-sm text-muted-foreground">
                       {detail.value}
                     </p>
                   </div>
